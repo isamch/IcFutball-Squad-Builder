@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg preserveAspectRatio="none" width="360px" height="300px" viewBox="0 0 360 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Pitch/NoStretch/FormationSummary</title>
+    <g id="Pitch/NoStretch/FormationSummary" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PITCH-A" stroke="#494949">
+            <g id="Group">
+                <rect id="Rectangle" stroke-width="2" fill="#333333" x="1" y="1" width="358" height="298"></rect>
+                <path d="M250.5,0.5 L109.5,0.5 L110,52.5 L250.5,52 L250.5,0.5 Z" id="Rectangle" fill-opacity="0" fill="#30651E"></path>
+                <path d="M178.5,256.5 L177.585552,256.50613 C162.711295,256.705301 149.266115,261.77143 139.496507,269.646193 C129.765851,277.489558 123.679396,288.122535 123.506838,299.498133 L233.496106,299.20262 C233.31848,287.828801 227.075502,277.143775 217.126551,269.309869 C207.187942,261.484107 193.547945,256.5 178.5,256.5 Z" id="Path" fill-opacity="0" fill="#30651E"></path>
+                <rect id="Rectangle" fill-opacity="0" fill="#30651E" x="143.5" y="0.5" width="73" height="28"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
