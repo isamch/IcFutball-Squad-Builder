@@ -121,6 +121,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: grab;
+}
+
+.tactic .image-container .empty-card:hover{
+  border-radius: 20px;
+  border-bottom: 1px solid var(--primary-color);
+  transition: all 0.4s;
 }
 
 .tactic .image-container .empty-card .player-empty-place {
@@ -220,11 +227,12 @@ body {
 }
 
 .empty-card .card-info-empty .player-img-empty {
-  width: 160px;
+  width: 100px;
   position: absolute;
-  top: 50%;
-  left: 45%;
+  top: 40%;
+  left: 50%;
   transform: translate(-50%, -50%);
+  mask-image: linear-gradient(to top, transparent 0%, black 20%, black 100%);
 }
 
 
@@ -278,11 +286,18 @@ body {
 
 .empty-card .card-info-empty .info-down-emprt .countr-team-empty {
   display: flex;
+  align-items: center;
 }
 
-.empty-card .card-info-empty .info-down-emprt .countr-team-empty img {
+.empty-card .card-info-empty .info-down-emprt .countr-team-empty img:nth-child(1) {
+  width: 12px;
+  height: 8px;
+}
+
+.empty-card .card-info-empty .info-down-emprt .countr-team-empty img:nth-child(2) {
   width: 12px;
 }
+
 
 
 
@@ -304,12 +319,11 @@ body {
 }
 
 .card-player-side .players-card {
+  cursor: grab;
   width: 130px;
   height: fit-content;
   font-size: 10px;
   position: relative;
-
-
   border-bottom: 1px solid transparent;
 
 }
@@ -324,9 +338,11 @@ body {
 
 
 .card-player-side .players-card .player-img-players {
-  width: 150px;
+  width: 100px;
   position: absolute;
-  top: 0%;
+  top: 15%;
+  left: 10%;
+  mask-image: linear-gradient(to top, transparent 0%, black 20%, black 100%);
 }
 
 
@@ -384,10 +400,15 @@ body {
 
 .card-player-side .players-card .info-down-players .countr-team-players {
   display: flex;
-
+  align-items: center;
 }
 
-.card-player-side .players-card .info-down-players .countr-team-players img {
+.card-player-side .players-card .info-down-players .countr-team-players img:nth-child(1) {
+  width: 12px;
+  height: 8px;
+}
+
+.card-player-side .players-card .info-down-players .countr-team-players img:nth-child(2) {
   width: 12px;
 }
 
@@ -421,6 +442,32 @@ body {
 
 
 
+/* drag and drop ======== */
+
+.dragin-now{
+  border: 1px solid var(--primary-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -437,7 +484,7 @@ body {
       "tactic players"
       "footer footer";
     grid-template-columns: 3fr 1fr;
-    grid-template-rows: auto auto 80vh auto;
+    grid-template-rows: auto 20vh 80vh auto;
 
   }
 
@@ -449,28 +496,26 @@ body {
 
   .pitch-image {
     width: 100% !important;
-
-
     max-width: 850px;
-
   }
+
 
   .tactic .image-container .empty-card .empty-image {
     width: 100px;
+    /* background-color: #E33700; */
   }
 
   /* absolute edit */
 
-  /* pac card editing  */
 
   /* .empty-card .card-info-empty {
 
-  }
+  } */
 
   .empty-card .card-info-empty .player-img-empty {
- 
-    
-  } */
+
+    width: 70px;
+  }
 
 
   .empty-card .card-info-empty .rating-empty {
@@ -505,24 +550,8 @@ body {
 
 
 
-
 }
 
-
-@media (max-width: 700px) {
-  
-  .container-native {
-    grid-template-areas:
-      "header header"
-      "substitutes substitutes"
-      "players players"
-      "tactic tactic"
-      "footer footer";
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: auto auto auto auto auto;
-  }
-  
-}
 
 
 
@@ -536,15 +565,8 @@ body {
       "substitutes substitutes"
       "footer footer";
     grid-template-columns: 3fr 1fr;
-    /* grid-template-rows: auto auto 80vh auto; */
+    grid-template-rows: auto 45vh 80vh auto auto;
+
   }
   
-  /* body {
-    transform: rotate(90deg);
-    transform-origin: center;
-    height: 100vw; 
-    width: 100vh; 
-    overflow-x: hidden; 
-  } */
-
 }
