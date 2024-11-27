@@ -59,6 +59,9 @@ fetch('/Data/players.json')
 
         updatePlayerFromDom();
         dragDrop();
+        searchAoutName();
+        filterDropDown();
+        
 
 
         console.log('get data');
@@ -240,7 +243,54 @@ function updatePlayerFromDom() {
 
 
 
+
+// search about player :
+function searchAoutName() {
+  const inputSearch = document.getElementById('search-dropdown');
+  
+  inputSearch.addEventListener('input', ()=>{
+    const playersZone = document.getElementById('side-zone');
+    const cards = playersZone.querySelectorAll('.side-card');
+    
+    cards.forEach(element => {
+      const cardPlayerName = element.querySelector('.name-empty').textContent.trim().toLowerCase();
+
+      if ( cardPlayerName.includes(inputSearch.value.toLowerCase()) ) {        
+        element.style.display = 'block';
+      } else {
+        element.style.display = 'none';
+      
+      }
+    });
+  });
+}
+
+// dropdown filter : 
+function filterDropDown() {
+  const choiceBtn = document.getElementById('dropdown').querySelectorAll('button')
+  choiceBtn.forEach(element => {
+    element.addEventListener('click', ()=>{
+      const playersZone = document.getElementById('side-zone');
+      const cards = playersZone.querySelectorAll('.side-card');
+            
+      const yourChoice = element.textContent;
+      cards.forEach(element => {
+
+        const cardPlayerName = element.dataset.pos;
+        if (yourChoice == 'ALL') {
+          element.style.display = 'block';
+        }else if (yourChoice == cardPlayerName) {
+          
+          element.style.display = 'block';
+        } else {
+          element.style.display = 'none';
+        
+        }
+      });
+    });
+  });
+}
+
+
+
 // add players to side bare :
-
-
-
