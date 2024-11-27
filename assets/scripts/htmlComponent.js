@@ -4,139 +4,366 @@ export function playerSideCard(data) {
   if(data.position === 'GK'){
 
     return `
-        <!-- card in side -->
-        <div class="players-card p-card" data-players="${data.position}" draggable="true">
 
-          <img src="assets/images/card/badg_bg_champions.png" alt="" class="players-image" draggable="false">
-          
-          <!-- inside card info -->
+          <!-- player for side -->
+          <div id="${data.id}" class="empty-card p-card side-card drop-zone" data-pos="${data.position}" draggable="true">
 
-            <!-- player-img-players -->
-            <img src="${data.photo}" alt="" class="player-img-players" draggable="false">
 
-            <!-- rating -->
-            <div class="rating-players">
-              <p>${data.rating}</p>
-              <span>${data.position}</span>
-            </div>
+            <img src="assets/images/card/badg_bg_champions.png" alt="" class="empty-image" draggable="false">
+            
+            <!-- inside card info -->
+            <div class="card-info-empty">
 
-            <div class="info-down-players">
-              <!-- name -->
-              <h3 class="name-players">
-                ${data.name}
-              </h3>
-              <!-- stats -->
-              <div class="power-stats-players">
-                <div class="stats-players pac">
-                  <span>DIV</span>
-                  <p>${data.diving}</p>
-                </div>
+              <!-- player-img-empty -->
+              <img src="${data.photo}" alt="" class="player-img-empty" draggable="false">
 
-                <div class="stats-players sho">
-                  <span>HAN</span>
-                  <p>${data.handling}</p>
-                </div>
+              
 
-                <div class="stats-players pas">
-                  <span>KIC</span>
-                  <p>${data.kicking}</p>
-                </div>
-
-                <div class="stats-players dri">
-                  <span>REF</span>
-                  <p>${data.reflexes}</p>
-                </div>
-
-                <div class="stats-players def">
-                  <span>SPD</span>
-                  <p>${data.speed}</p>
-                </div>
-
-                <div class="stats-players phy">
-                  <span>POS</span>
-                  <p>${data.positioning}</p>
-                </div>
+              <!-- rating -->
+              <div class="rating-empty">
+                <p>${data.rating}</p>
+                <span>${data.position}</span>
               </div>
 
-              <!-- country -->
-              <div class="countr-team-players">
-                <img src="${data.flag}" alt="">
-                <img src="${data.logo}" alt="">
+              <div class="info-down-emprt">
+                <!-- name -->
+                <h3 class="name-empty">
+                  ${data.name}
+                </h3>
+                <!-- stats -->
+                <div class="power-stats-empty">
+                  <div class="stats-empty pac">
+                    <span>DIV</span>
+                    <p>${data.diving}</p>
+                  </div>
+
+                  <div class="stats-empty sho">
+                    <span>HAN</span>
+                    <p>${data.handling}</p>
+                  </div>
+
+                  <div class="stats-empty pas">
+                    <span>KIC</span>
+                    <p>${data.kicking}</p>
+                  </div>
+
+                  <div class="stats-empty dri">
+                    <span>REF</span>
+                    <p>${data.reflexes}</p>
+                  </div>
+
+                  <div class="stats-empty def">
+                    <span>SPD</span>
+                    <p>${data.speed}</p>
+                  </div>
+
+                  <div class="stats-empty phy">
+                    <span>PHY</span>
+                    <p>${data.positioning}</p>
+                  </div>
+                </div>
+                <!-- country -->
+                <div class="countr-team-empty">
+                  <img src="${data.flag}" alt="">
+                  <img src="${data.logo}" alt="">
+                </div>
+
               </div>
+
+
+
 
             </div>
 
 
-        </div>
+          </div>
     ` 
 
   }else{
 
     return `
-         <!-- card in side -->
-          <div class="players-card players-card-1" data-players="${data.position}">
+
+    <!-- player for side -->
+    <div id="${data.id}" class="empty-card p-card side-card drop-zone" data-pos="${data.position}" draggable="true">
+
+
+      <img src="assets/images/card/badg_bg_champions.png" alt="" class="empty-image" draggable="false">
+      
+      <!-- inside card info -->
+      <div class="card-info-empty">
+
+        <!-- player-img-empty -->
+        <img src="${data.photo}" alt="" class="player-img-empty" draggable="false">
+
+        
+
+        <!-- rating -->
+        <div class="rating-empty">
+          <p>${data.rating}</p>
+          <span>${data.position}</span>
+        </div>
+
+        <div class="info-down-emprt">
+          <!-- name -->
+          <h3 class="name-empty">
+            ${data.name}
+          </h3>
+          <!-- stats -->
+          <div class="power-stats-empty">
+            <div class="stats-empty pac">
+              <span>PAC</span>
+              <p>${data.pace}</p>
+            </div>
+
+            <div class="stats-empty sho">
+              <span>SHO</span>
+              <p>${data.shooting}</p>
+            </div>
+
+            <div class="stats-empty pas">
+              <span>PAS</span>
+              <p>${data.passing}</p>
+            </div>
+
+            <div class="stats-empty dri">
+              <span>DRI</span>
+              <p>${data.dribbling}</p>
+            </div>
+
+            <div class="stats-empty def">
+              <span>DEF</span>
+              <p>${data.defending}</p>
+            </div>
+
+            <div class="stats-empty phy">
+              <span>PHY</span>
+              <p>${data.physical}</p>
+            </div>
+          </div>
+          <!-- country -->
+          <div class="countr-team-empty">
+            <img src="${data.flag}" alt="">
+            <img src="${data.logo}" alt="">
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+
+
+    </div>
+    ` 
+  }
+}
+
+
+let existCB = false;
+let existCM = 0;
+
+export function playerTeamCard(data) {
+
+  let emptyCardClass = '';
+  const position = data.position;
+
   
-            <img src="assets/images/card/badg_bg_champions.png" alt="" class="players-image">
-            
+  switch (position) {
+    case "GK":
+      emptyCardClass = "empty-card-1";
+      break;
+    case "LB":
+      emptyCardClass = "empty-card-2";
+      break;
+    case "RB":
+      emptyCardClass = "empty-card-5";
+      break;
+    case "CB":
+
+      if (!existCB) {
+        emptyCardClass = "empty-card-3";
+        existCB = true; 
+      }else{
+        emptyCardClass = "empty-card-4"; 
+      }
+      
+      break;
+
+    case "CM":
+      if (existCM == 0) {
+        emptyCardClass = "empty-card-6"; 
+        existCM++;
+      }else if (existCM == 1) {
+        emptyCardClass = "empty-card-7";
+        existCM++;
+      }else{
+
+        emptyCardClass = "empty-card-8";
+        existCM++;
+      }
+      break;
+
+
+    case "LW":
+      emptyCardClass = "empty-card-9";
+      break;
+    case "ST":
+      emptyCardClass = "empty-card-10";
+      break;
+    case "RW":
+      emptyCardClass = "empty-card-11";
+      break;    
+  }
+
+
+  if(data.position === 'GK'){
+
+    return `
+        <!-- players -->
+          <div id="${data.id}" class="empty-card ${emptyCardClass} p-card team-card drop-zone" data-pos="${data.position}" draggable="true">
+
+            <img src="assets/images/card/badg_bg_champions.png" alt="" class="empty-image" draggable="false">
+
             <!-- inside card info -->
-  
-              <!-- player-img-players -->
-              <img src="${data.photo}" alt="" class="player-img-players">
-  
-              <!-- rating -->
-              <div class="rating-players">
+            <div class="card-info-empty">
+
+              <!-- player-img-empty -->           
+              <img src="${data.photo}" alt="" class="player-img-empty" draggable="false">
+
+              
+
+               <!-- rating -->
+              <div class="rating-empty">
                 <p>${data.rating}</p>
                 <span>${data.position}</span>
               </div>
-  
-              <div class="info-down-players">
+
+              <div class="info-down-emprt">
                 <!-- name -->
-                <h3 class="name-players">
+                <h3 class="name-empty">
                   ${data.name}
                 </h3>
                 <!-- stats -->
-                <div class="power-stats-players">
-                  <div class="stats-players pac">
+                <div class="power-stats-empty">
+                  <div class="stats-empty pac">
+                    <span>DIV</span>
+                    <p>${data.diving}</p>
+                  </div>
+
+                  <div class="stats-empty sho">
+                    <span>HAN</span>
+                    <p>${data.handling}</p>
+                  </div>
+
+                  <div class="stats-empty pas">
+                    <span>KIC</span>
+                    <p>${data.kicking}</p>
+                  </div>
+
+                  <div class="stats-empty dri">
+                    <span>REF</span>
+                    <p>${data.reflexes}</p>
+                  </div>
+
+                  <div class="stats-empty def">
+                    <span>SPD</span>
+                    <p>${data.speed}</p>
+                  </div>
+
+                  <div class="stats-empty phy">
+                    <span>PHY</span>
+                    <p>${data.positioning}</p>
+                  </div>
+                </div>
+                <!-- country -->
+                <div class="countr-team-empty">
+                  <img src="${data.flag}" alt="">
+                  <img src="${data.logo}" alt="">
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+    `
+
+  }else{
+
+
+    return `
+    <!-- players -->
+          <div id="${data.id}" class="empty-card ${emptyCardClass}  p-card team-card drop-zone" data-pos="${data.position}" draggable="true">
+
+            <img src="assets/images/card/badg_bg_champions.png" alt="" class="empty-image" draggable="false">
+
+            <!-- inside card info -->
+            <div class="card-info-empty">
+
+              <!-- player-img-empty -->           
+              <img src="${data.photo}" alt="" class="player-img-empty" draggable="false">
+
+              
+
+              <!-- rating -->
+              <div class="rating-empty">
+                <p>${data.rating}</p>
+                <span>${data.position}</span>
+              </div>
+
+              <div class="info-down-emprt">
+                <!-- name -->
+                <h3 class="name-empty">
+                   ${data.name}
+                </h3>
+                <!-- stats -->
+                <div class="power-stats-empty">
+                  <div class="stats-empty pac">
                     <span>PAC</span>
                     <p>${data.pace}</p>
                   </div>
-  
-                  <div class="stats-players sho">
+
+                  <div class="stats-empty sho">
                     <span>SHO</span>
                     <p>${data.shooting}</p>
                   </div>
-  
-                  <div class="stats-players pas">
+
+                  <div class="stats-empty pas">
                     <span>PAS</span>
                     <p>${data.passing}</p>
                   </div>
-  
-                  <div class="stats-players dri">
+
+                  <div class="stats-empty dri">
                     <span>DRI</span>
                     <p>${data.dribbling}</p>
                   </div>
-  
-                  <div class="stats-players def">
+
+                  <div class="stats-empty def">
                     <span>DEF</span>
                     <p>${data.defending}</p>
                   </div>
-  
-                  <div class="stats-players phy">
+
+                  <div class="stats-empty phy">
                     <span>PHY</span>
                     <p>${data.physical}</p>
                   </div>
                 </div>
-  
                 <!-- country -->
-                <div class="countr-team-players">
+                <div class="countr-team-empty">
                   <img src="${data.flag}" alt="">
                   <img src="${data.logo}" alt="">
                 </div>
-  
+
               </div>
-  
-  
+
+            </div>
           </div>
-    ` 
+
+    `
+
+
   }
+
+
 }

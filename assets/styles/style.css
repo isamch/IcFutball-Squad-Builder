@@ -28,9 +28,10 @@ body {
     "lp tactic tactic players rp"
     "footer footer footer footer footer";
 
-  grid-template-columns: 0.1fr 0.5fr 4fr 2fr 0.1fr;
+  grid-template-columns: 0.1fr auto auto 2fr 0.1fr;
 
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto 200px 1fr auto;
+
   gap: 10px;
   background-color: var(--backgroun-color);
 }
@@ -69,6 +70,7 @@ body {
 
 .players {
   grid-area: players;
+  height: auto;
 }
 
 .footer {
@@ -114,7 +116,9 @@ body {
 }
 
 
-.tactic .image-container .empty-card {
+
+.tactic .image-container .empty-card
+{
   position: absolute;
   transform: translate(-50%, -50%);
   display: flex;
@@ -122,24 +126,31 @@ body {
   justify-content: center;
   align-items: center;
   cursor: grab;
+
+  border: 1px solid transparent;
+
 }
 
-.tactic .image-container .empty-card:hover{
+/* .tactic .image-container  */
+.empty-card:hover{
   border-radius: 20px;
-  border-bottom: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--primary-color) !important;
   transition: all 0.4s;
 }
 
-.tactic .image-container .empty-card .player-empty-place {
+/* .tactic .image-container  */
+.empty-card .player-empty-place {
   font-size: 14px;
 
 }
 
-.tactic .image-container .empty-card .empty-image {
+/* .tactic .image-container  */
+.empty-card .empty-image {
   width: 130px;
   height: auto;
   max-width: -webkit-fill-available;
 }
+
 
 /* players tactic 433 */
 .tactic .image-container .empty-card-1 {
@@ -318,99 +329,20 @@ body {
   width: 0;
 }
 
-.card-player-side .players-card {
-  cursor: grab;
-  width: 130px;
-  height: fit-content;
-  font-size: 10px;
-  position: relative;
-  border-bottom: 1px solid transparent;
 
-}
-
-
-.card-player-side .players-card:hover {
-  border-radius: 20px;
-  border-bottom: 1px solid var(--primary-color);
-  transition: all 0.4s;
-}
-
-
-
-.card-player-side .players-card .player-img-players {
-  width: 100px;
-  position: absolute;
-  top: 15%;
-  left: 10%;
-  mask-image: linear-gradient(to top, transparent 0%, black 20%, black 100%);
-}
-
-
-.card-player-side .players-card .rating-players {
-  width: fit-content;
-  position: absolute;
-  top: 25%;
-  left: 15%;
-  text-align: center;
-  font-size: 20px;
-  line-height: 10px;
-
-}
-
-.card-player-side .players-card .rating-players span {
-  font-size: 9px;
-  font-weight: 700;
-}
-
-.card-player-side .players-card .info-down-players {
+.side-card{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 90%;
-  position: absolute;
-  top: 60%;
-  left: 5%;
-  font-size: 10px;
-  text-wrap: nowrap;
-}
-
-.card-player-side .players-card .info-down-players .name-players {
-  font-size: 10px;
-}
-
-
-.card-player-side .players-card .info-down-players .power-stats-players {
-  display: flex;
   align-items: center;
-  gap: 3px;
-  width: 80%;
-  font-size: 7px;
-}
 
-.card-player-side .players-card .info-down-players .power-stats-players .stats-players {
-  text-align: center;
-}
+  position: relative;
 
-.card-player-side .players-card .info-down-players .power-stats-players .stats-players p {
-  font-weight: 700;
-}
+  border: 1px solid transparent;
+
+} 
 
 
-
-.card-player-side .players-card .info-down-players .countr-team-players {
-  display: flex;
-  align-items: center;
-}
-
-.card-player-side .players-card .info-down-players .countr-team-players img:nth-child(1) {
-  width: 12px;
-  height: 8px;
-}
-
-.card-player-side .players-card .info-down-players .countr-team-players img:nth-child(2) {
-  width: 12px;
-}
 
 
 
@@ -420,18 +352,31 @@ body {
 .substitutes{
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  max-height: 200px;
 }
+
 .card-substitutes{
-  height: auto;
+  width: 100%;
+  height: auto;  
+  display: flex;
   flex-wrap: nowrap;
   justify-content: start;
   overflow: scroll;
-  overflow-x: scroll;
   overflow-y: hidden;
+  overflow-x: scroll;
+
+
 }
 
-.card-substitutes .players-card{
-  width: 120px;
+.card-substitutes::-webkit-scrollbar{
+  width: 0;
+}
+
+.substitutes .side-card{
+  display: flex;
   flex-shrink: 0;
 }
 
@@ -445,14 +390,20 @@ body {
 /* drag and drop ======== */
 
 .dragin-now{
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--primary-color) !important;
 }
 
 
+.box-dropin{
+  border: 1px solid var(--primary-color) !important;
+  border-radius: 20px;
+}
 
 
-
-
+.box-green{
+  border: 1px solid greenyellow !important;
+  border-radius: 20px;
+}
 
 
 
@@ -484,9 +435,17 @@ body {
       "tactic players"
       "footer footer";
     grid-template-columns: 3fr 1fr;
-    grid-template-rows: auto 20vh 80vh auto;
+    /* grid-template-rows: auto 200px 1fr auto; */
+
+    grid-template-rows: auto 200px 1fr auto;
+
 
   }
+
+  .players {
+    height: inherit;
+  }
+  
 
   .lp,
   .rp {
@@ -500,7 +459,8 @@ body {
   }
 
 
-  .tactic .image-container .empty-card .empty-image {
+  /* .tactic .image-container  */
+  .empty-card .empty-image {
     width: 100px;
     /* background-color: #E33700; */
   }
@@ -565,8 +525,19 @@ body {
       "substitutes substitutes"
       "footer footer";
     grid-template-columns: 3fr 1fr;
-    grid-template-rows: auto 45vh 80vh auto auto;
+    grid-template-rows: auto 42vh auto auto auto;
+
 
   }
+
+
+  .players {
+    height: auto;
+  }
   
+  .card-player-side{
+    flex-direction: column;
+  }
+  
+
 }
