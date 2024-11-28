@@ -61,8 +61,10 @@ fetch('/Data/players.json')
         dragDrop();
         searchAoutName();
         filterDropDown();
-        
+      
+        // call some fun:
 
+        ifGoolKeper();
 
         console.log('get data');
     })
@@ -114,23 +116,23 @@ function displayPlayers(data) {
 
 function displayLocaTeam(dataTeam) {
   const parTeam = document.getElementById('team-zone');
-  dataTeam.forEach(cardHTML => {
-    parTeam.innerHTML += cardHTML;  
+  dataTeam.forEach(cardSingleHtml => {
+    parTeam.innerHTML += cardSingleHtml;  
   });
 }
 
 
 function displayLocalSub(dataSub) {
     const boxSubstitues = document.getElementById('substitutes-zone');
-    dataSub.forEach(cardHTML => {
-      boxSubstitues.innerHTML += cardHTML;
+    dataSub.forEach(cardSingleHtml => {
+      boxSubstitues.innerHTML += cardSingleHtml;
     });
 }
 
 function displayLocalSid(dataSid) {
   const boxSubstitues = document.getElementById('side-zone');
-  dataSid.forEach(cardHTML => {
-    boxSubstitues.innerHTML += cardHTML;
+  dataSid.forEach(cardSingleHtml => {
+    boxSubstitues.innerHTML += cardSingleHtml;
   });
 }
 
@@ -179,7 +181,7 @@ function dragDrop(){
       const dragingElement = document.querySelector('.dragin-now');
 
       // change just in team:
-      if (dragingElement.parentElement.id == 'team-zone' && boxDrop.parentElement.id === 'team-zone') {
+      if (dragingElement.parentElement.id == 'team-zone' && boxDrop.id === 'team-zone') {
     
         if (boxDrop.dataset.pos == dragingElement.dataset.pos) {
             
@@ -187,7 +189,6 @@ function dragDrop(){
 
         }
    
-
 
       }else{
       
@@ -267,13 +268,18 @@ function searchAoutName() {
 
 // dropdown filter : 
 function filterDropDown() {
-  const choiceBtn = document.getElementById('dropdown').querySelectorAll('button')
+  const filterBtnChoice = document.getElementById('dropdown-button');
+  const choiceBtn = document.getElementById('dropdown').querySelectorAll('button');
   choiceBtn.forEach(element => {
     element.addEventListener('click', ()=>{
       const playersZone = document.getElementById('side-zone');
       const cards = playersZone.querySelectorAll('.side-card');
             
       const yourChoice = element.textContent;
+      
+      filterBtnChoice.firstChild.textContent = yourChoice;
+      
+
       cards.forEach(element => {
 
         const cardPlayerName = element.dataset.pos;
@@ -293,4 +299,229 @@ function filterDropDown() {
 
 
 
+
+
+
 // add players to side bare :
+
+
+// regex :
+const nameFormRegex = /^[a-zA-Z]{2,10}( [a-zA-Z]{2,10})?$/;
+const numberFormRegex = /^(1[0-9]|[2-9][0-9])$/;
+
+  
+
+// inputs call :
+const addNewPlayearBtn = document.getElementById('submit-new-player');
+
+const nameForm = document.getElementById('namefrom');
+
+const ratingForm = document.getElementById('ratingform');
+const posForm = document.getElementById('posform');
+
+const pacForm = document.getElementById('pacform');
+const shoForm = document.getElementById('shoform');
+const pasForm = document.getElementById('pasform');
+const driForm = document.getElementById('driform');
+const defForm = document.getElementById('defform');
+const phyForm = document.getElementById('phyform');
+
+
+// validation : 
+
+function validationInputs() {
+  let inputsValide = true;
+
+  // name:
+  if (!nameFormRegex.test(nameForm.value)) {
+    inputsValide = false;
+    nameForm.classList.add('input-not-valide');
+  }else{
+    nameForm.classList.remove('input-not-valide');
+  }
+
+  // rating:
+  if (!numberFormRegex.test(ratingForm.value)) {
+    inputsValide = false;
+    ratingForm.classList.add('input-not-valide');
+  }else{
+    ratingForm.classList.remove('input-not-valide');
+  }
+
+  // pac:
+  if (!numberFormRegex.test(pacForm.value)) {
+    inputsValide = false;
+    pacForm.classList.add('input-not-valide');
+  }else{
+    pacForm.classList.remove('input-not-valide');
+  }
+
+  // sho:
+  if (!numberFormRegex.test(shoForm.value)) {
+    inputsValide = false;
+    shoForm.classList.add('input-not-valide');
+  }else{
+    shoForm.classList.remove('input-not-valide');
+  }
+
+  // pas:
+  if (!numberFormRegex.test(pasForm.value)) {
+    inputsValide = false;
+    pasForm.classList.add('input-not-valide');
+  }else{
+    pasForm.classList.remove('input-not-valide');
+  }
+
+  // dri:
+  if (!numberFormRegex.test(driForm.value)) {
+    inputsValide = false;
+    driForm.classList.add('input-not-valide');
+  }else{
+    driForm.classList.remove('input-not-valide');
+  }
+
+  // def:
+  if (!numberFormRegex.test(defForm.value)) {
+    inputsValide = false;
+    defForm.classList.add('input-not-valide');
+  }else{
+    defForm.classList.remove('input-not-valide');
+  }
+
+  // phy:
+  if (!numberFormRegex.test(phyForm.value)) {
+    inputsValide = false;
+    phyForm.classList.add('input-not-valide');
+  }else{
+    phyForm.classList.remove('input-not-valide');
+  }
+
+  
+  return inputsValide;
+}
+
+
+
+
+// function change to Goolkepr:
+function ifGoolKeper() {
+
+  posForm.addEventListener('change', ()=>{
+    if (posForm.value === "GK") {
+      
+      console.log(posForm.value);
+      console.log("non");
+      
+      // change text content if gk:
+      pacForm.parentElement.querySelector(`label[for="${pacForm.id}"]`).textContent = "DIV";
+      shoForm.parentElement.querySelector(`label[for="${shoForm.id}"]`).textContent = "HAN";
+      pasForm.parentElement.querySelector(`label[for="${pasForm.id}"]`).textContent = "KIC";
+      driForm.parentElement.querySelector(`label[for="${driForm.id}"]`).textContent = "REF";
+      defForm.parentElement.querySelector(`label[for="${defForm.id}"]`).textContent = "SPD";
+      phyForm.parentElement.querySelector(`label[for="${phyForm.id}"]`).textContent = "POS";
+
+    }else{
+
+      // change text content if not gk:
+      pacForm.parentElement.querySelector(`label[for="${pacForm.id}"]`).textContent = "PAC";
+      shoForm.parentElement.querySelector(`label[for="${shoForm.id}"]`).textContent = "SHO";
+      pasForm.parentElement.querySelector(`label[for="${pasForm.id}"]`).textContent = "PAS";
+      driForm.parentElement.querySelector(`label[for="${driForm.id}"]`).textContent = "DRI";
+      defForm.parentElement.querySelector(`label[for="${defForm.id}"]`).textContent = "DEF";
+      phyForm.parentElement.querySelector(`label[for="${phyForm.id}"]`).textContent = "PHY";
+
+    }
+  });
+
+}
+
+
+
+
+// get data from inputs from to object :
+function getPlayerDataToArray() {
+  let dataAddNew = {};
+  if (posForm.value === "GK") {
+
+    dataAddNew = {
+      "name": nameForm.value,
+      "photo": "https://cdn.sofifa.net/players/231/410/25_120.png",
+      "position": posForm.value,
+      "nationality": "Morocco",
+      "flag": "https://cdn.sofifa.net/flags/ma.png",
+      "club": "Al-Hilal",
+      "logo": "https://cdn.sofifa.net/meta/team/3468/120.png",
+      "rating": ratingForm.value,
+      "diving": pacForm.value,
+      "handling": shoForm.value,
+      "kicking": pasForm.value,
+      "reflexes": driForm.value,
+      "speed": defForm.value,
+      "positioning": phyForm.value
+    };
+  }else{
+    dataAddNew = {
+      "name": nameForm.value,
+      "photo": "https://cdn.sofifa.net/players/231/410/25_120.png",
+      "position": posForm.value,
+      "nationality": "Morocco",
+      "flag": "https://cdn.sofifa.net/flags/ma.png",
+      "club": "Al-Hilal",
+      "logo": "https://cdn.sofifa.net/meta/team/3468/120.png",
+      "rating": ratingForm.value,
+      "pace": pacForm.value,
+      "shooting": shoForm.value,
+      "passing": pasForm.value,
+      "dribbling": driForm.value,
+      "defending": defForm.value,
+      "physical": phyForm.value
+    };
+  }
+
+
+  return dataAddNew;
+}
+
+
+
+
+
+
+// add to dom function :
+function addToDomSide() {
+
+  const playersZone = document.getElementById('side-zone');
+
+  playersZone.innerHTML = playerSideCard(getPlayerDataToArray()) + playersZone.innerHTML;
+
+
+ 
+}
+
+
+
+
+
+addNewPlayearBtn.addEventListener('click', ()=>{
+  if (validationInputs()) {
+    addToDomSide();
+
+    updatePlayerFromDom();
+    dragDrop();
+    searchAoutName();
+    filterDropDown();
+  }else{
+    console.log('nvalid');
+  }
+});
+
+
+
+
+
+
+
+
+
+
+

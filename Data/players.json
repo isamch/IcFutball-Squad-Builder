@@ -87,7 +87,7 @@
       },
       {
         "id": 6,
-        "name": "Kevin De Bruyne",
+        "name": "K.De Bruyne",
         "photo": "https://cdn.sofifa.net/players/192/985/25_120.png",
         "position": "CM",
         "nationality": "Belgium",
@@ -359,7 +359,7 @@
       },
       {
         "id": 22,
-        "name": "Trent Alexander-Arnold",
+        "name": "Trent Arnold",
         "photo": "https://cdn.sofifa.net/players/231/281/25_120.png",
         "position": "RB",
         "nationality": "England",
@@ -375,7 +375,7 @@
       },
       {
         "id": 23,
-        "name": "Youssef En-Nesyri",
+        "name": "Y.En-Nesyri",
         "photo": "https://cdn.sofifa.net/players/235/410/25_120.png",
         "position": "ST",
         "nationality": "Morocco",
@@ -426,7 +426,7 @@
       },
       {
         "id": 26,
-        "name": "Gianluigi Donnarumma",
+        "name": "G.Donnarumma",
         "photo": "https://cdn.sofifa.net/players/230/621/25_120.png",
         "position": "GK",
         "nationality": "Italy",

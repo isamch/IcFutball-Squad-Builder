@@ -6,7 +6,7 @@ export function playerSideCard(data) {
     return `
 
           <!-- player for side -->
-          <div id="${data.id}" class="empty-card p-card side-card drop-zone" data-pos="${data.position}" draggable="true">
+          <div  class="empty-card p-card side-card drop-zone" data-pos="${data.position}" draggable="true">
 
 
             <img src="assets/images/card/badg_bg_champions.png" alt="" class="empty-image" draggable="false">
@@ -58,7 +58,7 @@ export function playerSideCard(data) {
                   </div>
 
                   <div class="stats-empty phy">
-                    <span>PHY</span>
+                    <span>POS</span>
                     <p>${data.positioning}</p>
                   </div>
                 </div>
@@ -84,7 +84,7 @@ export function playerSideCard(data) {
     return `
 
     <!-- player for side -->
-    <div id="${data.id}" class="empty-card p-card side-card drop-zone" data-pos="${data.position}" draggable="true">
+    <div  class="empty-card p-card side-card drop-zone" data-pos="${data.position}" draggable="true">
 
 
       <img src="assets/images/card/badg_bg_champions.png" alt="" class="empty-image" draggable="false">
@@ -221,7 +221,7 @@ export function playerTeamCard(data) {
 
     return `
         <!-- players -->
-          <div id="${data.id}" class="empty-card ${emptyCardClass} p-card team-card drop-zone" data-pos="${data.position}" draggable="true">
+          <div  class="empty-card ${emptyCardClass} p-card team-card drop-zone" data-pos="${data.position}" draggable="true">
 
             <img src="assets/images/card/badg_bg_champions.png" alt="" class="empty-image" draggable="false">
 
@@ -272,7 +272,7 @@ export function playerTeamCard(data) {
                   </div>
 
                   <div class="stats-empty phy">
-                    <span>PHY</span>
+                    <span>POS</span>
                     <p>${data.positioning}</p>
                   </div>
                 </div>
@@ -294,7 +294,7 @@ export function playerTeamCard(data) {
 
     return `
     <!-- players -->
-          <div id="${data.id}" class="empty-card ${emptyCardClass}  p-card team-card drop-zone" data-pos="${data.position}" draggable="true">
+          <div  class="empty-card ${emptyCardClass}  p-card team-card drop-zone" data-pos="${data.position}" draggable="true">
 
             <img src="assets/images/card/badg_bg_champions.png" alt="" class="empty-image" draggable="false">
 
@@ -367,3 +367,5 @@ export function playerTeamCard(data) {
 
 
 }
+
+

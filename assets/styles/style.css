@@ -406,10 +406,10 @@ body {
 }
 
 
-
-
-
-
+/* validation  */
+.input-not-valide{
+  border: 2px red solid !important;
+}
 
 
 
