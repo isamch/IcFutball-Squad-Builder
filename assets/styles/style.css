@@ -415,6 +415,77 @@ body {
 
 
 
+/* js other formation */
+
+
+/* players tactic 442 */
+.tactic .image-container .empty-card-1.second-plan {
+  top: 85%;
+  left: 50%;
+}
+
+/* def */
+/* lb */
+.tactic .image-container .empty-card-2.second-plan {
+  top: 60%;
+  left: 15%;
+}
+
+/* 1bc */
+.tactic .image-container .empty-card-3.second-plan {
+  top: 70%;
+  left: 32%;
+}
+
+/* 2bc */
+.tactic .image-container .empty-card-4.second-plan {
+  top: 70%;
+  left: 68%;
+}
+
+/* rb */
+.tactic .image-container .empty-card-5.second-plan {
+  top: 60%;
+  left: 85%;
+}
+
+/* mid */
+/* md1 */
+.tactic .image-container .empty-card-6.second-plan {
+  top: 40%;
+  left: 15%;
+}
+
+/* md2 */
+.tactic .image-container .empty-card-7.second-plan {
+  top: 45%;
+  left: 60%;
+}
+
+/* md3 */
+.tactic .image-container .empty-card-8.second-plan {
+  top: 40%;
+  left: 85%;
+}
+
+/* attac */
+/* lw */
+.tactic .image-container .empty-card-9.second-plan {
+  top: 20%;
+  left: 35%;
+}
+
+/* st */
+.tactic .image-container .empty-card-10.second-plan {
+  top: 45%;
+  left: 40%;
+}
+
+/* rb */
+.tactic .image-container .empty-card-11.second-plan {
+  top: 20%;
+  left: 65%;
+}
 
 
 

@@ -64,6 +64,8 @@ fetch('/Data/players.json')
         // call some fun:
         ifGoolKeper();
 
+
+
         console.log('get data');
     })
     .catch(error => {
@@ -538,4 +540,42 @@ function clearInputs() {
 }
 
 
+
+
+
+// change formation team:
+
+
+// choose options :
+
+window.onload = function() {
+  const optionFormation = document.getElementById('teamformation');
+  
+  optionFormation.addEventListener('change', () => {
+    
+    if (optionFormation.value == "442") {
+      const parTeam = document.getElementById('team-zone');
+      const allCardTeamFormation = parTeam.querySelectorAll('.empty-card');
+
+      allCardTeamFormation.forEach(element => {
+        element.classList.add('second-plan');
+        
+      });
+
+    }else{
+      
+      const parTeam = document.getElementById('team-zone');
+      const allCardTeamFormation = parTeam.querySelectorAll('.empty-card');
+
+      allCardTeamFormation.forEach(element => {
+        element.classList.remove('second-plan');
+        
+      });
+
+    }
+      
+
+  });
+  
+};
 
