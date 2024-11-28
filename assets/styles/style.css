@@ -125,7 +125,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  cursor: grab;
+  cursor: grab !important;
 
   border: 1px solid transparent;
 
@@ -335,10 +335,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   position: relative;
-
   border: 1px solid transparent;
+  cursor: grab !important;
+
 
 } 
 
@@ -427,7 +427,7 @@ body {
 
 
 
-@media (max-width: 1050px) {
+@media (max-width: 1236px) {
   .container-native {
     grid-template-areas:
       "header header"

@@ -47,7 +47,6 @@ fetch('/Data/players.json')
 
           displayLocalSid(dataPlayearArr);
 
-          console.log('side');
 
         } else {
             dataPlayearArr = dataPlayers.slice(19);
@@ -63,7 +62,6 @@ fetch('/Data/players.json')
         filterDropDown();
       
         // call some fun:
-
         ifGoolKeper();
 
         console.log('get data');
@@ -77,18 +75,9 @@ fetch('/Data/players.json')
 
 
 
-function saveFataFromDom() {
-    localStorage.setItem('dataTeamArr', JSON.stringify(dataTeamArr));
-    localStorage.setItem('dataSubArr', JSON.stringify(dataSubArr));
-    localStorage.setItem('dataPlayearArr', JSON.stringify(dataPlayearArr));
-
-}
-
-
 
 
 // display from json for first time:
-
 function displayTeam(data) {
     const boxTeam = document.getElementById('team-zone');
     for (let i = 0; i < data.length; i++) {
@@ -113,7 +102,6 @@ function displayPlayers(data) {
 
 
 // display from localStorage:
-
 function displayLocaTeam(dataTeam) {
   const parTeam = document.getElementById('team-zone');
   dataTeam.forEach(cardSingleHtml => {
@@ -189,11 +177,9 @@ function dragDrop(){
 
         }
    
-
       }else{
       
         const parSub = dragingElement.parentElement;
-
 
         if (boxDrop.dataset.pos == dragingElement.dataset.pos) {
 
@@ -205,7 +191,14 @@ function dragDrop(){
   
         }
 
+        if (boxDrop.id == "drop-delet" && parSub.id == "side-zone") {
+          dragingElement.remove();
+        }
+
+
       }
+
+
 
 
       boxDrop.classList.remove('box-green');
@@ -227,8 +220,7 @@ function dragDrop(){
 }
 
 
-
-
+// update data to loacl:
 function updatePlayerFromDom() {
   const teamBoxCards = document.querySelectorAll('.team-card');
   const substitutesZone = document.getElementById('substitutes-zone');
@@ -241,7 +233,13 @@ function updatePlayerFromDom() {
   saveFataFromDom();
 }
 
+// save data to local:
+function saveFataFromDom() {
+  localStorage.setItem('dataTeamArr', JSON.stringify(dataTeamArr));
+  localStorage.setItem('dataSubArr', JSON.stringify(dataSubArr));
+  localStorage.setItem('dataPlayearArr', JSON.stringify(dataPlayearArr));
 
+}
 
 
 
@@ -265,6 +263,8 @@ function searchAoutName() {
     });
   });
 }
+
+
 
 // dropdown filter : 
 function filterDropDown() {
@@ -293,6 +293,9 @@ function filterDropDown() {
         
         }
       });
+
+      filterBtnChoice.click();
+
     });
   });
 }
@@ -300,21 +303,19 @@ function filterDropDown() {
 
 
 
-
-
 // add players to side bare :
-
 
 // regex :
 const nameFormRegex = /^[a-zA-Z]{2,10}( [a-zA-Z]{2,10})?$/;
 const numberFormRegex = /^(1[0-9]|[2-9][0-9])$/;
-
+const imgUrlRegex = /https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp|bmp|svg)/i;
   
 
 // inputs call :
 const addNewPlayearBtn = document.getElementById('submit-new-player');
 
 const nameForm = document.getElementById('namefrom');
+const imgForm = document.getElementById('imgform');
 
 const ratingForm = document.getElementById('ratingform');
 const posForm = document.getElementById('posform');
@@ -328,7 +329,6 @@ const phyForm = document.getElementById('phyform');
 
 
 // validation : 
-
 function validationInputs() {
   let inputsValide = true;
 
@@ -338,6 +338,14 @@ function validationInputs() {
     nameForm.classList.add('input-not-valide');
   }else{
     nameForm.classList.remove('input-not-valide');
+  }
+
+  // img Form:
+  if (!imgUrlRegex.test(imgForm.value) && imgForm.value != "") {
+    inputsValide = false;
+    imgForm.classList.add('input-not-valide');
+  }else{
+    imgForm.classList.remove('input-not-valide');
   }
 
   // rating:
@@ -401,8 +409,6 @@ function validationInputs() {
 }
 
 
-
-
 // function change to Goolkepr:
 function ifGoolKeper() {
 
@@ -437,7 +443,6 @@ function ifGoolKeper() {
 
 
 
-
 // get data from inputs from to object :
 function getPlayerDataToArray() {
   let dataAddNew = {};
@@ -445,7 +450,7 @@ function getPlayerDataToArray() {
 
     dataAddNew = {
       "name": nameForm.value,
-      "photo": "https://cdn.sofifa.net/players/231/410/25_120.png",
+      "photo": imgForm.value? imgForm.value : "https://cdn.sofifa.net/players/231/410/25_120.png",
       "position": posForm.value,
       "nationality": "Morocco",
       "flag": "https://cdn.sofifa.net/flags/ma.png",
@@ -462,7 +467,7 @@ function getPlayerDataToArray() {
   }else{
     dataAddNew = {
       "name": nameForm.value,
-      "photo": "https://cdn.sofifa.net/players/231/410/25_120.png",
+      "photo": imgForm.value? imgForm.value : "https://cdn.sofifa.net/players/231/410/25_120.png",
       "position": posForm.value,
       "nationality": "Morocco",
       "flag": "https://cdn.sofifa.net/flags/ma.png",
@@ -484,16 +489,10 @@ function getPlayerDataToArray() {
 
 
 
-
-
-
 // add to dom function :
 function addToDomSide() {
-
   const playersZone = document.getElementById('side-zone');
-
   playersZone.innerHTML = playerSideCard(getPlayerDataToArray()) + playersZone.innerHTML;
-
 
  
 }
@@ -501,10 +500,14 @@ function addToDomSide() {
 
 
 
-
 addNewPlayearBtn.addEventListener('click', ()=>{
   if (validationInputs()) {
     addToDomSide();
+
+    const closeModal = document.getElementById('close-modal');
+
+    closeModal.click();
+    clearInputs();
 
     updatePlayerFromDom();
     dragDrop();
@@ -518,10 +521,21 @@ addNewPlayearBtn.addEventListener('click', ()=>{
 
 
 
+// function clear inputs :
+function clearInputs() {
 
+  nameForm.value = "";
+  imgForm.value = "";
+  ratingForm.value = "";
+  
+  pacForm.value = "";
+  shoForm.value = "";
+  pasForm.value = "";
+  driForm.value = "";
+  defForm.value = "";
+  phyForm.value = "";
 
-
-
+}
 
 
 
