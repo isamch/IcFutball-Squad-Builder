@@ -63,7 +63,7 @@ fetch('/Data/players.json')
       
         // call some fun:
         ifGoolKeper();
-
+        changeFormation();
 
 
         console.log('get data');
@@ -548,7 +548,7 @@ function clearInputs() {
 
 // choose options :
 
-window.onload = function() {
+function changeFormation() {
   const optionFormation = document.getElementById('teamformation');
   
   optionFormation.addEventListener('change', () => {
@@ -562,7 +562,9 @@ window.onload = function() {
         
       });
 
-    }else{
+    }
+    
+    if (optionFormation.value == "433") {
       
       const parTeam = document.getElementById('team-zone');
       const allCardTeamFormation = parTeam.querySelectorAll('.empty-card');
