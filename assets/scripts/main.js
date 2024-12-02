@@ -41,6 +41,9 @@ fetch('/Data/players.json')
 
         }
 
+       
+
+
 
         if (localDataPlayearArr.length > 0) {
           dataPlayearArr = localDataPlayearArr;
